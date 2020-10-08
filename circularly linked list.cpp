@@ -1,7 +1,8 @@
 #include<iostream>
 using namespace std;
-struct node
+class node
 {
+    public:
     int data;
     node *next;
 }*head,*tail,*newnode;
@@ -11,7 +12,7 @@ int main()
     int choice=1;
     while(choice)
     {
-        newnode=(node *)malloc(sizeof(node));
+        newnode=new Node();
         cout<<"enter data\n";
         cin>>newnode->data;
         newnode->next=0;
@@ -24,11 +25,12 @@ int main()
         else
         {
             tail->next=newnode;
-            newnode->next=head;
+            //newnode->next=head;
             tail=newnode;
-            // tail->next=head;
+            tail->next=head;
         }
         cout<<"enter your choice\n";
+        cout<<"1 for continue or 0 for exit\n";
         cin>>choice;    
     }
     tail=head;
@@ -37,6 +39,7 @@ int main()
         cout<<tail->data<<" ";
         tail=tail->next;
     }
+    // as last node didn't print we have to print it too.
     cout<<tail->data;
     
 }
